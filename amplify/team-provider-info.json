@@ -1,0 +1,20 @@
+{
+  "staging": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-onekgp-staging-140444-authRole",
+      "UnauthRoleArn": "arn:aws:iam::114169595148:role/amplify-onekgp-staging-140444-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::114169595148:role/amplify-onekgp-staging-140444-authRole",
+      "Region": "ap-south-1",
+      "DeploymentBucketName": "amplify-onekgp-staging-140444-deployment",
+      "UnauthRoleName": "amplify-onekgp-staging-140444-unauthRole",
+      "StackName": "amplify-onekgp-staging-140444",
+      "StackId": "arn:aws:cloudformation:ap-south-1:114169595148:stack/amplify-onekgp-staging-140444/d478e7d0-457f-11ed-a854-029e46d1421c",
+      "AmplifyAppId": "d6s1z48g5e631"
+    },
+    "categories": {
+      "auth": {
+        "onekgp": {}
+      }
+    }
+  }
+}

@@ -1,0 +1,24 @@
+type OneKgpUser @model @auth(rules: [{allow: private}]) {
+  id: ID!
+  name: String!
+  email: String!
+}
+
+enum Location {
+  CCU
+  KGP
+}
+
+type TravelPost @model @auth(rules: [{allow: owner}, {allow: private, operations: [read], provider: iam}]) {
+  id: ID!
+  from: Location!
+  to: Location!
+  seats: Int!
+  isAvailable: Boolean!
+  flightTime: AWSTime
+  cabStartTime: AWSTime
+  cabEndTime: AWSTime
+  date: AWSDate!
+  user: OneKgpUser! @hasOne
+}
+ 

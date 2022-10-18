@@ -1,0 +1,12 @@
+{
+  "AppSyncApiName": "onekgp",
+  "DynamoDBBillingMode": "PAY_PER_REQUEST",
+  "DynamoDBEnableServerSideEncryption": false,
+  "AuthModeLastUpdated": "2022-10-15T04:55:39.121Z",
+  "AuthCognitoUserPoolId": {
+    "Fn::GetAtt": [
+      "authonekgp",
+      "Outputs.UserPoolId"
+    ]
+  }
+}

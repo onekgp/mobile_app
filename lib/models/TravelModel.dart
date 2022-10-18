@@ -24,23 +24,21 @@ import 'package:amplify_core/amplify_core.dart';
 import 'package:flutter/foundation.dart';
 
 
-/** This is an auto generated class representing the TravelPost type in your schema. */
+/** This is an auto generated class representing the TravelModel type in your schema. */
 @immutable
-class TravelPost extends Model {
-  static const classType = const _TravelPostModelType();
+class TravelModel extends Model {
+  static const classType = const _TravelModelModelType();
   final String id;
   final Location? _from;
   final Location? _to;
-  final int? _seats;
-  final bool? _isAvailable;
-  final TemporalTime? _flightTime;
-  final TemporalTime? _cabStartTime;
-  final TemporalTime? _cabEndTime;
-  final TemporalDate? _date;
+  final String? _description;
+  final TemporalDateTime? _leavingTime;
   final OneKgpUser? _user;
+  final int? _seats;
+  final bool? _isCabBooked;
   final TemporalDateTime? _createdAt;
   final TemporalDateTime? _updatedAt;
-  final String? _travelPostUserId;
+  final String? _travelModelUserId;
 
   @override
   getInstanceType() => classType;
@@ -76,47 +74,13 @@ class TravelPost extends Model {
     }
   }
   
-  int get seats {
+  String? get description {
+    return _description;
+  }
+  
+  TemporalDateTime get leavingTime {
     try {
-      return _seats!;
-    } catch(e) {
-      throw new AmplifyCodeGenModelException(
-          AmplifyExceptionMessages.codeGenRequiredFieldForceCastExceptionMessage,
-          recoverySuggestion:
-            AmplifyExceptionMessages.codeGenRequiredFieldForceCastRecoverySuggestion,
-          underlyingException: e.toString()
-          );
-    }
-  }
-  
-  bool get isAvailable {
-    try {
-      return _isAvailable!;
-    } catch(e) {
-      throw new AmplifyCodeGenModelException(
-          AmplifyExceptionMessages.codeGenRequiredFieldForceCastExceptionMessage,
-          recoverySuggestion:
-            AmplifyExceptionMessages.codeGenRequiredFieldForceCastRecoverySuggestion,
-          underlyingException: e.toString()
-          );
-    }
-  }
-  
-  TemporalTime? get flightTime {
-    return _flightTime;
-  }
-  
-  TemporalTime? get cabStartTime {
-    return _cabStartTime;
-  }
-  
-  TemporalTime? get cabEndTime {
-    return _cabEndTime;
-  }
-  
-  TemporalDate get date {
-    try {
-      return _date!;
+      return _leavingTime!;
     } catch(e) {
       throw new AmplifyCodeGenModelException(
           AmplifyExceptionMessages.codeGenRequiredFieldForceCastExceptionMessage,
@@ -140,6 +104,14 @@ class TravelPost extends Model {
     }
   }
   
+  int? get seats {
+    return _seats;
+  }
+  
+  bool? get isCabBooked {
+    return _isCabBooked;
+  }
+  
   TemporalDateTime? get createdAt {
     return _createdAt;
   }
@@ -148,9 +120,9 @@ class TravelPost extends Model {
     return _updatedAt;
   }
   
-  String get travelPostUserId {
+  String get travelModelUserId {
     try {
-      return _travelPostUserId!;
+      return _travelModelUserId!;
     } catch(e) {
       throw new AmplifyCodeGenModelException(
           AmplifyExceptionMessages.codeGenRequiredFieldForceCastExceptionMessage,
@@ -161,21 +133,19 @@ class TravelPost extends Model {
     }
   }
   
-  const TravelPost._internal({required this.id, required from, required to, required seats, required isAvailable, flightTime, cabStartTime, cabEndTime, required date, required user, createdAt, updatedAt, required travelPostUserId}): _from = from, _to = to, _seats = seats, _isAvailable = isAvailable, _flightTime = flightTime, _cabStartTime = cabStartTime, _cabEndTime = cabEndTime, _date = date, _user = user, _createdAt = createdAt, _updatedAt = updatedAt, _travelPostUserId = travelPostUserId;
+  const TravelModel._internal({required this.id, required from, required to, description, required leavingTime, required user, seats, isCabBooked, createdAt, updatedAt, required travelModelUserId}): _from = from, _to = to, _description = description, _leavingTime = leavingTime, _user = user, _seats = seats, _isCabBooked = isCabBooked, _createdAt = createdAt, _updatedAt = updatedAt, _travelModelUserId = travelModelUserId;
   
-  factory TravelPost({String? id, required Location from, required Location to, required int seats, required bool isAvailable, TemporalTime? flightTime, TemporalTime? cabStartTime, TemporalTime? cabEndTime, required TemporalDate date, required OneKgpUser user, required String travelPostUserId}) {
-    return TravelPost._internal(
+  factory TravelModel({String? id, required Location from, required Location to, String? description, required TemporalDateTime leavingTime, required OneKgpUser user, int? seats, bool? isCabBooked, required String travelModelUserId}) {
+    return TravelModel._internal(
       id: id == null ? UUID.getUUID() : id,
       from: from,
       to: to,
-      seats: seats,
-      isAvailable: isAvailable,
-      flightTime: flightTime,
-      cabStartTime: cabStartTime,
-      cabEndTime: cabEndTime,
-      date: date,
+      description: description,
+      leavingTime: leavingTime,
       user: user,
-      travelPostUserId: travelPostUserId);
+      seats: seats,
+      isCabBooked: isCabBooked,
+      travelModelUserId: travelModelUserId);
   }
   
   bool equals(Object other) {
@@ -185,18 +155,16 @@ class TravelPost extends Model {
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is TravelPost &&
+    return other is TravelModel &&
       id == other.id &&
       _from == other._from &&
       _to == other._to &&
-      _seats == other._seats &&
-      _isAvailable == other._isAvailable &&
-      _flightTime == other._flightTime &&
-      _cabStartTime == other._cabStartTime &&
-      _cabEndTime == other._cabEndTime &&
-      _date == other._date &&
+      _description == other._description &&
+      _leavingTime == other._leavingTime &&
       _user == other._user &&
-      _travelPostUserId == other._travelPostUserId;
+      _seats == other._seats &&
+      _isCabBooked == other._isCabBooked &&
+      _travelModelUserId == other._travelModelUserId;
   }
   
   @override
@@ -206,93 +174,76 @@ class TravelPost extends Model {
   String toString() {
     var buffer = new StringBuffer();
     
-    buffer.write("TravelPost {");
+    buffer.write("TravelModel {");
     buffer.write("id=" + "$id" + ", ");
     buffer.write("from=" + (_from != null ? enumToString(_from)! : "null") + ", ");
     buffer.write("to=" + (_to != null ? enumToString(_to)! : "null") + ", ");
+    buffer.write("description=" + "$_description" + ", ");
+    buffer.write("leavingTime=" + (_leavingTime != null ? _leavingTime!.format() : "null") + ", ");
     buffer.write("seats=" + (_seats != null ? _seats!.toString() : "null") + ", ");
-    buffer.write("isAvailable=" + (_isAvailable != null ? _isAvailable!.toString() : "null") + ", ");
-    buffer.write("flightTime=" + (_flightTime != null ? _flightTime!.format() : "null") + ", ");
-    buffer.write("cabStartTime=" + (_cabStartTime != null ? _cabStartTime!.format() : "null") + ", ");
-    buffer.write("cabEndTime=" + (_cabEndTime != null ? _cabEndTime!.format() : "null") + ", ");
-    buffer.write("date=" + (_date != null ? _date!.format() : "null") + ", ");
+    buffer.write("isCabBooked=" + (_isCabBooked != null ? _isCabBooked!.toString() : "null") + ", ");
     buffer.write("createdAt=" + (_createdAt != null ? _createdAt!.format() : "null") + ", ");
     buffer.write("updatedAt=" + (_updatedAt != null ? _updatedAt!.format() : "null") + ", ");
-    buffer.write("travelPostUserId=" + "$_travelPostUserId");
+    buffer.write("travelModelUserId=" + "$_travelModelUserId");
     buffer.write("}");
     
     return buffer.toString();
   }
   
-  TravelPost copyWith({String? id, Location? from, Location? to, int? seats, bool? isAvailable, TemporalTime? flightTime, TemporalTime? cabStartTime, TemporalTime? cabEndTime, TemporalDate? date, OneKgpUser? user, String? travelPostUserId}) {
-    return TravelPost._internal(
+  TravelModel copyWith({String? id, Location? from, Location? to, String? description, TemporalDateTime? leavingTime, OneKgpUser? user, int? seats, bool? isCabBooked, String? travelModelUserId}) {
+    return TravelModel._internal(
       id: id ?? this.id,
       from: from ?? this.from,
       to: to ?? this.to,
-      seats: seats ?? this.seats,
-      isAvailable: isAvailable ?? this.isAvailable,
-      flightTime: flightTime ?? this.flightTime,
-      cabStartTime: cabStartTime ?? this.cabStartTime,
-      cabEndTime: cabEndTime ?? this.cabEndTime,
-      date: date ?? this.date,
+      description: description ?? this.description,
+      leavingTime: leavingTime ?? this.leavingTime,
       user: user ?? this.user,
-      travelPostUserId: travelPostUserId ?? this.travelPostUserId);
+      seats: seats ?? this.seats,
+      isCabBooked: isCabBooked ?? this.isCabBooked,
+      travelModelUserId: travelModelUserId ?? this.travelModelUserId);
   }
   
-  TravelPost.fromJson(Map<String, dynamic> json)  
+  TravelModel.fromJson(Map<String, dynamic> json)  
     : id = json['id'],
       _from = enumFromString<Location>(json['from'], Location.values),
       _to = enumFromString<Location>(json['to'], Location.values),
-      _seats = (json['seats'] as num?)?.toInt(),
-      _isAvailable = json['isAvailable'],
-      _flightTime = json['flightTime'] != null ? TemporalTime.fromString(json['flightTime']) : null,
-      _cabStartTime = json['cabStartTime'] != null ? TemporalTime.fromString(json['cabStartTime']) : null,
-      _cabEndTime = json['cabEndTime'] != null ? TemporalTime.fromString(json['cabEndTime']) : null,
-      _date = json['date'] != null ? TemporalDate.fromString(json['date']) : null,
+      _description = json['description'],
+      _leavingTime = json['leavingTime'] != null ? TemporalDateTime.fromString(json['leavingTime']) : null,
       _user = json['user']?['serializedData'] != null
         ? OneKgpUser.fromJson(new Map<String, dynamic>.from(json['user']['serializedData']))
         : null,
+      _seats = (json['seats'] as num?)?.toInt(),
+      _isCabBooked = json['isCabBooked'],
       _createdAt = json['createdAt'] != null ? TemporalDateTime.fromString(json['createdAt']) : null,
       _updatedAt = json['updatedAt'] != null ? TemporalDateTime.fromString(json['updatedAt']) : null,
-      _travelPostUserId = json['travelPostUserId'];
+      _travelModelUserId = json['travelModelUserId'];
   
   Map<String, dynamic> toJson() => {
-    'id': id, 'from': enumToString(_from), 'to': enumToString(_to), 'seats': _seats, 'isAvailable': _isAvailable, 'flightTime': _flightTime?.format(), 'cabStartTime': _cabStartTime?.format(), 'cabEndTime': _cabEndTime?.format(), 'date': _date?.format(), 'user': _user?.toJson(), 'createdAt': _createdAt?.format(), 'updatedAt': _updatedAt?.format(), 'travelPostUserId': _travelPostUserId
+    'id': id, 'from': enumToString(_from), 'to': enumToString(_to), 'description': _description, 'leavingTime': _leavingTime?.format(), 'user': _user?.toJson(), 'seats': _seats, 'isCabBooked': _isCabBooked, 'createdAt': _createdAt?.format(), 'updatedAt': _updatedAt?.format(), 'travelModelUserId': _travelModelUserId
   };
 
   static final QueryField ID = QueryField(fieldName: "id");
   static final QueryField FROM = QueryField(fieldName: "from");
   static final QueryField TO = QueryField(fieldName: "to");
-  static final QueryField SEATS = QueryField(fieldName: "seats");
-  static final QueryField ISAVAILABLE = QueryField(fieldName: "isAvailable");
-  static final QueryField FLIGHTTIME = QueryField(fieldName: "flightTime");
-  static final QueryField CABSTARTTIME = QueryField(fieldName: "cabStartTime");
-  static final QueryField CABENDTIME = QueryField(fieldName: "cabEndTime");
-  static final QueryField DATE = QueryField(fieldName: "date");
+  static final QueryField DESCRIPTION = QueryField(fieldName: "description");
+  static final QueryField LEAVINGTIME = QueryField(fieldName: "leavingTime");
   static final QueryField USER = QueryField(
     fieldName: "user",
     fieldType: ModelFieldType(ModelFieldTypeEnum.model, ofModelName: (OneKgpUser).toString()));
-  static final QueryField TRAVELPOSTUSERID = QueryField(fieldName: "travelPostUserId");
+  static final QueryField SEATS = QueryField(fieldName: "seats");
+  static final QueryField ISCABBOOKED = QueryField(fieldName: "isCabBooked");
+  static final QueryField TRAVELMODELUSERID = QueryField(fieldName: "travelModelUserId");
   static var schema = Model.defineSchema(define: (ModelSchemaDefinition modelSchemaDefinition) {
-    modelSchemaDefinition.name = "TravelPost";
-    modelSchemaDefinition.pluralName = "TravelPosts";
+    modelSchemaDefinition.name = "TravelModel";
+    modelSchemaDefinition.pluralName = "TravelModels";
     
     modelSchemaDefinition.authRules = [
       AuthRule(
-        authStrategy: AuthStrategy.OWNER,
-        ownerField: "owner",
-        identityClaim: "cognito:username",
-        provider: AuthRuleProvider.USERPOOLS,
+        authStrategy: AuthStrategy.PRIVATE,
         operations: [
           ModelOperation.CREATE,
           ModelOperation.UPDATE,
           ModelOperation.DELETE,
-          ModelOperation.READ
-        ]),
-      AuthRule(
-        authStrategy: AuthStrategy.PRIVATE,
-        provider: AuthRuleProvider.IAM,
-        operations: [
           ModelOperation.READ
         ])
     ];
@@ -300,58 +251,46 @@ class TravelPost extends Model {
     modelSchemaDefinition.addField(ModelFieldDefinition.id());
     
     modelSchemaDefinition.addField(ModelFieldDefinition.field(
-      key: TravelPost.FROM,
+      key: TravelModel.FROM,
       isRequired: true,
       ofType: ModelFieldType(ModelFieldTypeEnum.enumeration)
     ));
     
     modelSchemaDefinition.addField(ModelFieldDefinition.field(
-      key: TravelPost.TO,
+      key: TravelModel.TO,
       isRequired: true,
       ofType: ModelFieldType(ModelFieldTypeEnum.enumeration)
     ));
     
     modelSchemaDefinition.addField(ModelFieldDefinition.field(
-      key: TravelPost.SEATS,
+      key: TravelModel.DESCRIPTION,
+      isRequired: false,
+      ofType: ModelFieldType(ModelFieldTypeEnum.string)
+    ));
+    
+    modelSchemaDefinition.addField(ModelFieldDefinition.field(
+      key: TravelModel.LEAVINGTIME,
       isRequired: true,
+      ofType: ModelFieldType(ModelFieldTypeEnum.dateTime)
+    ));
+    
+    modelSchemaDefinition.addField(ModelFieldDefinition.hasOne(
+      key: TravelModel.USER,
+      isRequired: true,
+      ofModelName: (OneKgpUser).toString(),
+      associatedKey: OneKgpUser.ID
+    ));
+    
+    modelSchemaDefinition.addField(ModelFieldDefinition.field(
+      key: TravelModel.SEATS,
+      isRequired: false,
       ofType: ModelFieldType(ModelFieldTypeEnum.int)
     ));
     
     modelSchemaDefinition.addField(ModelFieldDefinition.field(
-      key: TravelPost.ISAVAILABLE,
-      isRequired: true,
+      key: TravelModel.ISCABBOOKED,
+      isRequired: false,
       ofType: ModelFieldType(ModelFieldTypeEnum.bool)
-    ));
-    
-    modelSchemaDefinition.addField(ModelFieldDefinition.field(
-      key: TravelPost.FLIGHTTIME,
-      isRequired: false,
-      ofType: ModelFieldType(ModelFieldTypeEnum.time)
-    ));
-    
-    modelSchemaDefinition.addField(ModelFieldDefinition.field(
-      key: TravelPost.CABSTARTTIME,
-      isRequired: false,
-      ofType: ModelFieldType(ModelFieldTypeEnum.time)
-    ));
-    
-    modelSchemaDefinition.addField(ModelFieldDefinition.field(
-      key: TravelPost.CABENDTIME,
-      isRequired: false,
-      ofType: ModelFieldType(ModelFieldTypeEnum.time)
-    ));
-    
-    modelSchemaDefinition.addField(ModelFieldDefinition.field(
-      key: TravelPost.DATE,
-      isRequired: true,
-      ofType: ModelFieldType(ModelFieldTypeEnum.date)
-    ));
-    
-    modelSchemaDefinition.addField(ModelFieldDefinition.hasOne(
-      key: TravelPost.USER,
-      isRequired: true,
-      ofModelName: (OneKgpUser).toString(),
-      associatedKey: OneKgpUser.ID
     ));
     
     modelSchemaDefinition.addField(ModelFieldDefinition.nonQueryField(
@@ -369,18 +308,18 @@ class TravelPost extends Model {
     ));
     
     modelSchemaDefinition.addField(ModelFieldDefinition.field(
-      key: TravelPost.TRAVELPOSTUSERID,
+      key: TravelModel.TRAVELMODELUSERID,
       isRequired: true,
       ofType: ModelFieldType(ModelFieldTypeEnum.string)
     ));
   });
 }
 
-class _TravelPostModelType extends ModelType<TravelPost> {
-  const _TravelPostModelType();
+class _TravelModelModelType extends ModelType<TravelModel> {
+  const _TravelModelModelType();
   
   @override
-  TravelPost fromJson(Map<String, dynamic> jsonData) {
-    return TravelPost.fromJson(jsonData);
+  TravelModel fromJson(Map<String, dynamic> jsonData) {
+    return TravelModel.fromJson(jsonData);
   }
 }

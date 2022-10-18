@@ -30,10 +30,12 @@ final ButtonStyle raisedButtonStyle = ElevatedButton.styleFrom(
 ThemeData lightTheme = ThemeData(
   brightness: Brightness.light,
   colorScheme: ColorScheme.fromSwatch(
-    brightness: Brightness.light,
     primarySwatch: primaryBlack,
   ),
-  indicatorColor: Colors.black,
+  appBarTheme:
+      AppBarTheme(backgroundColor: Color(0xFFEFEEEE), iconTheme: IconThemeData(color: Colors.black), elevation: 0),
+  scaffoldBackgroundColor: Color(0xFFEFEEEE),
+  indicatorColor: Colors.cyan,
   textTheme: GoogleFonts.nunitoTextTheme().copyWith(
     // text theme of the header on each step
     headline6: TextStyle(

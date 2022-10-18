@@ -76,6 +76,32 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return Authenticator(
+      signUpForm: SignUpForm.custom(
+        fields: [
+          SignUpFormField.username(),
+          SignUpFormField.email(required: true),
+          SignUpFormField.custom(
+            required: true,
+            validator: ((value) {
+              if (value == null || value.isEmpty) {
+                return 'You must provide a website';
+              }
+              if (!value.contains('example.com')) {
+                return 'Your website must be have a domain of example.com';
+              }
+              return null;
+            }),
+            title: 'Website',
+            attributeKey: CognitoUserAttributeKey.website,
+          ),
+          SignUpFormField.custom(
+            title: 'Bio',
+            attributeKey: const CognitoUserAttributeKey.custom('bio'),
+          ),
+          SignUpFormField.password(),
+          SignUpFormField.passwordConfirmation(),
+        ],
+      ),
       authenticatorBuilder: (context, state) {
         SizeConfig().init(context);
         switch (state.currentStep) {
@@ -119,13 +145,16 @@ class _MyAppState extends State<MyApp> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     const Text('Don\'t have an account?'),
-                    TextButton(
-                      onPressed: () => state.changeStep(
+                    GestureDetector(
+                      onTap: () => state.changeStep(
                         AuthenticatorStep.signUp,
                       ),
-                      child: Text(
-                        'Sign Up',
-                        style: Theme.of(context).textTheme.bodyMedium!.copyWith(fontWeight: FontWeight.bold),
+                      child: Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child: Text(
+                          'Sign Up',
+                          style: Theme.of(context).textTheme.bodyMedium!.copyWith(fontWeight: FontWeight.bold),
+                        ),
                       ),
                     ),
                   ],
@@ -161,7 +190,15 @@ class _MyAppState extends State<MyApp> {
                         ),
                         SizedBox(height: 20.toHeight),
                         // prebuilt sign in form from amplify_authenticator package
-                        SignUpForm(),
+                        SignUpForm.custom(
+                          fields: [
+                            SignUpFormField.name(required: true),
+                            SignUpFormField.email(required: true),
+                            SignUpFormField.phoneNumber(),
+                            SignUpFormField.password(),
+                            SignUpFormField.passwordConfirmation(),
+                          ],
+                        ),
                       ],
                     ),
                   ),
@@ -173,13 +210,16 @@ class _MyAppState extends State<MyApp> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     const Text('Already have an account?'),
-                    TextButton(
-                      onPressed: () => state.changeStep(
+                    GestureDetector(
+                      onTap: () => state.changeStep(
                         AuthenticatorStep.signIn,
                       ),
-                      child: Text(
-                        'Sign In',
-                        style: Theme.of(context).textTheme.bodyMedium!.copyWith(fontWeight: FontWeight.bold),
+                      child: Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child: Text(
+                          'Sign In',
+                          style: Theme.of(context).textTheme.bodyMedium!.copyWith(fontWeight: FontWeight.bold),
+                        ),
                       ),
                     ),
                   ],
@@ -229,7 +269,7 @@ class _MyAppState extends State<MyApp> {
                     const Text('Change email ?'),
                     TextButton(
                       onPressed: () => state.changeStep(
-                        AuthenticatorStep.signIn,
+                        AuthenticatorStep.signUp,
                       ),
                       child: Text(
                         'Sign Up',

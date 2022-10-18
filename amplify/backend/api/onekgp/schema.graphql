@@ -1,3 +1,14 @@
+type TravelModel @model @auth(rules: [{allow: private}]) {
+  id: ID!
+  from: Location!
+  to: Location!
+  description: String
+  leavingTime: AWSDateTime!
+  user: OneKgpUser! @hasOne
+  seats: Int
+  isCabBooked: Boolean
+}
+
 type OneKgpUser @model @auth(rules: [{allow: private}]) {
   id: ID!
   name: String!
@@ -7,18 +18,5 @@ type OneKgpUser @model @auth(rules: [{allow: private}]) {
 enum Location {
   CCU
   KGP
-}
-
-type TravelPost @model @auth(rules: [{allow: owner}, {allow: private, operations: [read], provider: iam}]) {
-  id: ID!
-  from: Location!
-  to: Location!
-  seats: Int!
-  isAvailable: Boolean!
-  flightTime: AWSTime
-  cabStartTime: AWSTime
-  cabEndTime: AWSTime
-  date: AWSDate!
-  user: OneKgpUser! @hasOne
 }
  

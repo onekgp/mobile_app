@@ -73,12 +73,13 @@ class UserServices {
       String? email, name;
       for (final e in result) {
         if (e.userAttributeKey.key == "email") email = e.value;
+        if (e.userAttributeKey.key == "name") name = e.value;
       }
       if (email != null) {
         Amplify.DataStore.save(
           OneKgpUser(
             email: email,
-            name: authUser.username,
+            name: name ?? "",
             id: authUser.userId,
           ),
         );

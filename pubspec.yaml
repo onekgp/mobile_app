@@ -43,6 +43,8 @@ dependencies:
   cupertino_icons: ^1.0.2
   intl: ^0.17.0
   amplify_authenticator: ^0.2.3
+  url_launcher: ^6.1.6
+  flutter_rounded_date_picker: ^3.0.2
 
 dev_dependencies:
   flutter_test:

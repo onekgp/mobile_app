@@ -21,17 +21,17 @@
 
 import 'package:amplify_core/amplify_core.dart';
 import 'OneKgpUser.dart';
-import 'TravelPost.dart';
+import 'TravelModel.dart';
 
 export 'Location.dart';
 export 'OneKgpUser.dart';
-export 'TravelPost.dart';
+export 'TravelModel.dart';
 
 class ModelProvider implements ModelProviderInterface {
   @override
-  String version = "24553fba92ed59d89ddaa6a8f2e3dee2";
+  String version = "789e8ed312b1a91702a4a30136f5099c";
   @override
-  List<ModelSchema> modelSchemas = [OneKgpUser.schema, TravelPost.schema];
+  List<ModelSchema> modelSchemas = [OneKgpUser.schema, TravelModel.schema];
   static final ModelProvider _instance = ModelProvider();
   @override
   List<ModelSchema> customTypeSchemas = [];
@@ -42,8 +42,8 @@ class ModelProvider implements ModelProviderInterface {
     switch(modelName) {
       case "OneKgpUser":
         return OneKgpUser.classType;
-      case "TravelPost":
-        return TravelPost.classType;
+      case "TravelModel":
+        return TravelModel.classType;
       default:
         throw Exception("Failed to find model in model provider for model name: " + modelName);
     }
